@@ -9,8 +9,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getName = void 0;
-const getName = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.json(1123);
+exports.getUsers = exports.saveUser = void 0;
+const user_module_1 = require("../modules/user.module");
+const saveUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const newUser = new user_module_1.User(req.body.name, req.body.password);
+    newUser.saveUser();
+    res.send(newUser.greeting());
 });
-exports.getName = getName;
+exports.saveUser = saveUser;
+const getUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const allUsers = new user_module_1.User('0', '0');
+    const us = yield allUsers.getAllUsers();
+    console.log(us);
+    res.json(us);
+});
+exports.getUsers = getUsers;
