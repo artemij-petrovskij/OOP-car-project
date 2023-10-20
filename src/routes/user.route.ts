@@ -1,10 +1,14 @@
 import express from 'express'
-import { saveUser, getUsers } from '../controller/user.controller'
+import { httpUserController } from '../controllers/httpUserController'
 
 const router = express.Router()
 
-router.post('/', saveUser) 
+router.get('/',)
 
-router.get('/', getUsers)
+router.post('/', async (req: any, res: any): Promise<any> => {
 
-export default router   
+    res.send('123')
+
+})
+
+export default router    
